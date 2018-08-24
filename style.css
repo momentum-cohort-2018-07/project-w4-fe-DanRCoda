@@ -1,0 +1,22 @@
+* {
+    min-width: 320;
+}
+
+#container {
+    min-width: 320px;
+    
+}
+
+#Artist {
+    width: 150px;
+}
+
+.search_results {
+    display: inline-block;
+    margin: 10px;
+    width: 100px;
+    height: 100px;
+    min-width: 320px;
+
+}
+
