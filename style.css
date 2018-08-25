@@ -11,12 +11,16 @@
     width: 150px;
 }
 
-.search_results {
+/* .search_results {
     display: inline-block;
     margin: 10px;
     width: 100px;
     height: 100px;
     min-width: 320px;
+} */
+
+#results-list {
+    display: inline-block;
+    min-width: 320px;
 
 }
-
