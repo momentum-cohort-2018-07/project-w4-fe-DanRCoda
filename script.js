@@ -2,6 +2,15 @@ import 'shoelace-css/dist/shoelace.css'
 
 import request from 'superagent'
 
+// this adds an eventListener to the search resutls and connects it to the audio player
+let resultsList = document.getElementById('results-list')
+resultsList.addEventListener('click', function (event) {
+  if (event.target && event.target.classList.contains('resultItem')) {
+    console.log('click')
+    document.getElementById('playback').src = event.target.dataset.previewUrl
+    document.getElementById('playback').play()
+  }
+})
 // this is getting the search button from html
 let searchForm = document.getElementById('form')
 // what happen when you click submit
@@ -16,7 +25,7 @@ searchForm.addEventListener('submit', event => {
   request.get('https://itunes.apple.com/search?term=' + userInput)
     .then(response => JSON.parse(response.text))
     .then(body => {
-    //   document.getElementById('results-list').innerHTML = ''
+      document.getElementById('results-list').innerHTML = ''
       for (let item of body.results) {
         displayResults(item)
       }
@@ -29,10 +38,18 @@ function displayResults (item) {
   if (item.kind === 'song') {
     let resultsList = document.getElementById('results-list')
     let resultsLi = document.createElement('li')
-    resultsLi.dataset.previewURL = item.previewURL
+    resultsLi.dataset.previewUrl = item.previewUrl
+    resultsLi.classList.add('resultItem')
     resultsLi.innerHTML = `<img src="${item.artworkUrl100}" alt = "artwork"><br>
                          <p class ="song-name">${item.trackName}</p>
                          <p class ="artist-name">${item.artistName}</p>`
     resultsList.appendChild(resultsLi)
   }
 }
+
+// function playSong (song) {
+//   let audioPlayback = document.getElementById('playback')
+//   let songPlay = document.createElement('song')
+//   songPlay.innerHTML = `<src =${song.previewURL}`
+//   audioPlayback.appendChild(songPlay)
+// }

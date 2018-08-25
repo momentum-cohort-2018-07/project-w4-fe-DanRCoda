@@ -7,20 +7,28 @@
     
 }
 
+h1 {
+    /* height: 100px; */
+    background: content-box radial-gradient(blue, green)
+}
+
 #Artist {
     width: 150px;
 }
 
-/* .search_results {
-    display: inline-block;
-    margin: 10px;
-    width: 100px;
-    height: 100px;
-    min-width: 320px;
-} */
-
-#results-list {
+li {
     display: inline-block;
     min-width: 320px;
+    line-height: .0rem;
+}
 
+p {
+    padding-top: 15px;
+    max-width: 320px;
+    line-height: 1rem;
+}
+
+
+img {
+    padding-top: 10px;
 }
